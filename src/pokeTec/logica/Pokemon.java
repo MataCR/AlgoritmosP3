@@ -11,7 +11,7 @@ package pokeTec.logica;
  */
 public class Pokemon {
     private String especie, nombre, preevolucion, posibleEvolucion, padre, hijos;
-    private int ataque, defensa, ataqueEsp, defensaEsp;
+    private int ataque, defensa, ataqueEsp, defensaEsp, idLista;
 
     public Pokemon(String especie, String nombre, String preevolucion, String posibleEvolucion, String padre, String hijos, int ataque, int defensa, int ataqueEsp, int defensaEsp) {
         this.especie = especie;
@@ -104,6 +104,14 @@ public class Pokemon {
 
     public void setDefensaEsp(int defensaEsp) {
         this.defensaEsp = defensaEsp;
+    }
+
+    public int getIdLista() {
+        return idLista;
+    }
+
+    public void setIdLista(int idLista) {
+        this.idLista = idLista;
     }
     
 }

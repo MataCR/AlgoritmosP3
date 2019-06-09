@@ -33,7 +33,15 @@ public class Main {
             System.out.println(gestor.dijkstra(0, 2));
             
 //            System.out.println(gestor.getGrafo().toString());
-            
-            
+
+            GestionPokemon gestorPoke = new GestionPokemon();
+            Pokemon pokemon1 = new Pokemon("especie", "PIKACHU", "preevolucion", "posibleEvolucion", "padre", "hijos", 0, 0, 0, 0);
+            Pokemon pokemon2 = new Pokemon("especie", "PIKACHU2", "preevolucion", "posibleEvolucion", "padre", "hijos", 0, 0, 0, 0);
+            gestorPoke.nuevoVertice(pokemon1);
+            gestorPoke.nuevoVertice(pokemon2);
+            gestorPoke.nuevaArista(pokemon1, pokemon2);
+            gestorPoke.nuevaArista(pokemon2, pokemon1);
+            gestorPoke.inicializarGrafo();
+            System.out.println(gestorPoke.getGrafo().toString());            
 	}    
 }
