@@ -6,6 +6,8 @@
 package pokeTec.logica;
 
 import pokeTec.estructuras.ControladorGrafo;
+import pokeTec.estructuras.DoubleLinkedList;
+import pokeTec.estructuras.DoubleLinkedNode;
 import pokeTec.estructuras.Grafo;
 
 /**
@@ -16,10 +18,20 @@ public class GestionPokemon {
 	private  ControladorGrafo controlador;
 	private  Grafo grafo;
         public  int idVertice;
+        private DoubleLinkedList<Pokemon> listaPoke;
         
     public GestionPokemon() {
         this.controlador = new ControladorGrafo();
         this.idVertice = 0 ;
+        this.listaPoke = new DoubleLinkedList<>();
+    }
+
+    public DoubleLinkedList<Pokemon> getListaPoke() {
+        return listaPoke;
+    }
+
+    public void setListaPoke(DoubleLinkedList<Pokemon> listaPoke) {
+        this.listaPoke = listaPoke;
     }
 
     public ControladorGrafo getControlador() {
@@ -50,7 +62,19 @@ public class GestionPokemon {
         pokemon.setIdLista(this.idVertice);
         this.controlador.nuevoVertice(pokemon.getNombre(), pokemon);
         this.idVertice = this.idVertice + 1;
+        this.listaPoke.insert(pokemon);
     }
+     
+     public Pokemon buscarNombre(String nombre){
+         DoubleLinkedNode<Pokemon> temp = this.listaPoke.getHead();
+         for (int i = 0; i < this.listaPoke.getSize(); i++) {
+             if (temp.getElement().getNombre().equals(nombre)) {
+                 break;
+             }
+             temp = temp.getNext();
+         }
+         return temp.getElement();
+     }
    
     public void nuevaArista(Pokemon placeDe, Pokemon placeA){
         StringBuilder value=new StringBuilder().append(placeDe.getIdLista()).append(placeDe.getIdLista());

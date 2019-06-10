@@ -5,8 +5,11 @@
  */
 package pokeTec.logica;
 
+import pokeTec.estructuras.Arista;
 import pokeTec.estructuras.ControladorGrafo;
 import pokeTec.estructuras.Dijkstra;
+import pokeTec.estructuras.DoubleLinkedList;
+import pokeTec.estructuras.DoubleLinkedNode;
 import pokeTec.estructuras.Grafo;
 import pokeTec.estructuras.Vertice;
 
@@ -19,11 +22,23 @@ public class GestionPokePlace {
 	private  Grafo grafo;
 	private  Dijkstra dijkstra;  
         public  int idVertice;
-
+        private DoubleLinkedList<PokePlace> listaPlaces;
     public GestionPokePlace() {
         this.controlador = new ControladorGrafo();
         this.idVertice = 0 ;
+        this.listaPlaces = new DoubleLinkedList<>();
+        
     }
+
+    public DoubleLinkedList<PokePlace> getListaPlaces() {
+        return listaPlaces;
+    }
+
+    public void setListaPlaces(DoubleLinkedList<PokePlace> listaPlaces) {
+        this.listaPlaces = listaPlaces;
+    }
+
+
 
     public ControladorGrafo getControlador() {
         return controlador;
@@ -54,11 +69,25 @@ public class GestionPokePlace {
         place.setIdLista(this.idVertice);
         this.controlador.nuevoVertice(place.getId(), place);
         this.idVertice = this.idVertice + 1;
+        this.listaPlaces.insert(place);
+    }
+    
+    public PokePlace buscarPlaceId (String id){
+        DoubleLinkedNode<PokePlace> temp = this.listaPlaces.getHead();
+        for (int i = 0; i < this.listaPlaces.getSize(); i++) {
+            if (temp.getElement().getId().equals(id)) {
+                break;
+            }
+            temp = temp.getNext();
+        }
+        
+        return temp.getElement();
     }
     
     public void nuevaArista(PokePlace placeDe, PokePlace placeA){
         StringBuilder value=new StringBuilder().append(placeDe.getId()).append(placeDe.getId());
         this.controlador.nuevaArista(value.toString(), placeDe.getIdLista(), placeA.getIdLista(),calcularLongitud(placeDe,placeA));
+        
     }
     
     public void inicializarGrafo(){
@@ -79,14 +108,10 @@ public class GestionPokePlace {
         int x2 = placeA.getX();
         int y2 = placeA.getY();   
         double distancia = 0 ;
-        distancia = Math.pow((Math.pow(x2-x1, 2))+(Math.pow(y2-y1, 2)), 1/2);
+        distancia = Math.hypot(x2-x1, y2-y1);
         return distancia;
     }
 
-//   public void eliminarVertice(PokePlace place){
-//       Vertice<PokePlace> = new Vertice(place.getId(), place);
-//       this.controlador.getVertices().remove(place);
-//   }
-   
+
 
 }
