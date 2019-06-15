@@ -5,6 +5,12 @@
  */
 package pokeTec.gui;
 
+import java.awt.BasicStroke;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JFrame;
 import static javax.swing.JOptionPane.showMessageDialog;
 import pokeTec.estructuras.Arista;
 import pokeTec.estructuras.DoubleLinkedList;
@@ -26,8 +32,7 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     private GestionPokePlace gestorPlace;
-    private GestionPokemon   gestorPokemo;
- 
+    private GestionPokemon gestorPokemo;
 
     public GestionPokePlace getGestorPlace() {
         return gestorPlace;
@@ -45,8 +50,6 @@ public class Principal extends javax.swing.JFrame {
         this.gestorPokemo = gestorPokemo;
     }
 
-
-   
     public Principal() {
         this.gestorPlace = new GestionPokePlace();
         this.gestorPokemo = new GestionPokemon();
@@ -121,6 +124,7 @@ public class Principal extends javax.swing.JFrame {
         label22 = new java.awt.Label();
         jScrollPane6 = new javax.swing.JScrollPane();
         tableRelacion = new javax.swing.JTable();
+        btnVerGrafo = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,15 +142,15 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         label1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        label1.setText("Crear Ruta");
+        label1.setText("Create Route");
 
         label2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        label2.setText("Tipo: ");
+        label2.setText("Type: ");
 
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Punto de Captura", "Hospital Pokemon", "Poke Restaurante", "Tienda Pokemon", "Gimnasio Pokemon" }));
 
         label3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label3.setText("Nombre\n");
+        label3.setText("Name");
 
         label4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         label4.setText("Y:");
@@ -154,7 +158,7 @@ public class Principal extends javax.swing.JFrame {
         label5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         label5.setText("ID:");
 
-        btnIngresar.setText("Ingresar");
+        btnIngresar.setText("Enter");
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
@@ -175,15 +179,15 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableVertices);
 
         label6.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        label6.setText("Agregar PokePlace");
+        label6.setText("Add PokePlace");
 
         label7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        label7.setText("Partida: ");
+        label7.setText("Starting point: ");
 
         label8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        label8.setText("Llegada: ");
+        label8.setText("Arrival point: ");
 
-        btnAgregarRuta.setText("Agregar Ruta");
+        btnAgregarRuta.setText("Add Route");
         btnAgregarRuta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarRutaActionPerformed(evt);
@@ -203,7 +207,7 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tableAristas);
 
-        btnGrafoI.setText("Inicializar Grafo");
+        btnGrafoI.setText("Inicilizate Graph");
         btnGrafoI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafoIActionPerformed(evt);
@@ -221,39 +225,39 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3.setViewportView(editorTexto);
 
         label9.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        label9.setText("Crear Pokemon \n");
+        label9.setText("Create Pokemon");
 
         label10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         label10.setText("X: ");
 
         label11.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label11.setText("Especie");
+        label11.setText("Kind");
 
         label12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label12.setText("Preevolucion");
+        label12.setText("Preevolution");
 
         label13.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label13.setText("Padre");
+        label13.setText("Father");
 
         label14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label14.setText("Hijo");
+        label14.setText("Son");
 
         label15.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label15.setText("PosibleEvolucion");
+        label15.setText("PosibleEvolution");
 
         label16.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label16.setText("Ataque");
+        label16.setText("Attack");
 
         label17.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label17.setText("Defensa");
+        label17.setText("Defense");
 
         label18.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label18.setText("AtaqueEspecial");
+        label18.setText("Special Attack");
 
         label19.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        label19.setText("DefensaEspecial");
+        label19.setText("Special Defense");
 
-        btnPokemon.setText("Agregar Pokemon");
+        btnPokemon.setText("Add Pokemon");
         btnPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPokemonActionPerformed(evt);
@@ -273,14 +277,14 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(tablePokemones);
 
-        btnGrafoPokemon.setText("Inicializar Grafo");
+        btnGrafoPokemon.setText("Inicializate Graph");
         btnGrafoPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafoPokemonActionPerformed(evt);
             }
         });
 
-        btnRelacionar.setText("Relacionar");
+        btnRelacionar.setText("Relate");
         btnRelacionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRelacionarActionPerformed(evt);
@@ -288,13 +292,13 @@ public class Principal extends javax.swing.JFrame {
         });
 
         label20.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        label20.setText("Hijo");
+        label20.setText("Son");
 
         label21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        label21.setText("Padre");
+        label21.setText("Father");
 
         label22.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        label22.setText("Crear Relacion");
+        label22.setText("Relate");
 
         tableRelacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -309,53 +313,65 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(tableRelacion);
 
+        btnVerGrafo.setText("See Graph");
+        btnVerGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerGrafoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtY))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtX))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtY))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtX))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(654, 654, 654)
+                        .addComponent(btnVerGrafo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnDijkstra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAgregarRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtIDLlegada)
-                                    .addComponent(txtIDPartida)
-                                    .addComponent(btnGrafoI, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)))))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnDijkstra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregarRuta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtIDLlegada)
+                            .addComponent(txtIDPartida)
+                            .addComponent(btnGrafoI, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
@@ -377,7 +393,7 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(btnGrafoPokemon, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(95, 95, 95)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -527,7 +543,9 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(btnIngresar))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(97, 97, 97)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnVerGrafo)
+                        .addGap(47, 47, 47)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -555,16 +573,16 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-       
-        try {      
-        String tipo = this.comboTipo.getSelectedItem().toString();
-        int x = Integer.parseInt(this.txtX.getText());
-        int y = Integer.parseInt(this.txtY.getText());
-        String id = this.txtId.getText();
-        PokePlace place = new PokePlace(tipo, x, y, id);
-        this.gestorPlace.nuevoVertice(place);
-        
-        actualizarTablaPlaces();            
+
+        try {
+            String tipo = this.comboTipo.getSelectedItem().toString();
+            int x = Integer.parseInt(this.txtX.getText());
+            int y = Integer.parseInt(this.txtY.getText());
+            String id = this.txtId.getText();
+            PokePlace place = new PokePlace(tipo, x, y, id);
+            this.gestorPlace.nuevoVertice(place);
+
+            actualizarTablaPlaces();
         } catch (Exception e) {
             showMessageDialog(null, "ERROR");
         }
@@ -572,11 +590,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnAgregarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarRutaActionPerformed
         try {
-         PokePlace partida = this.gestorPlace.buscarPlaceId(this.txtIDPartida.getText());
-        PokePlace llegada = this.gestorPlace.buscarPlaceId(this.txtIDLlegada.getText());
-        this.gestorPlace.nuevaArista(partida, llegada);
-        showMessageDialog(null, "Se agrego de: "+this.gestorPlace.buscarPlaceId(this.txtIDPartida.getText()).getId()
-                +" a "+this.gestorPlace.buscarPlaceId(this.txtIDLlegada.getText()).getId());           
+            PokePlace partida = this.gestorPlace.buscarPlaceId(this.txtIDPartida.getText());
+            PokePlace llegada = this.gestorPlace.buscarPlaceId(this.txtIDLlegada.getText());
+            this.gestorPlace.nuevaArista(partida, llegada);
+            showMessageDialog(null, "Se agrego de: " + this.gestorPlace.buscarPlaceId(this.txtIDPartida.getText()).getId()
+                    + " a " + this.gestorPlace.buscarPlaceId(this.txtIDLlegada.getText()).getId());
         } catch (Exception e) {
             showMessageDialog(null, "ERROR");
         }
@@ -585,42 +603,42 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnGrafoIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafoIActionPerformed
         try {
-        this.gestorPlace.inicializarGrafo();
-        actualizarTablaRutas();            
+            this.gestorPlace.inicializarGrafo();
+            actualizarTablaRutas();
         } catch (Exception e) {
-             showMessageDialog(null, e);
+            showMessageDialog(null, e);
         }
 
     }//GEN-LAST:event_btnGrafoIActionPerformed
 
     private void btnDijkstraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDijkstraActionPerformed
         try {
-         int partida = Integer.parseInt(this.txtIDPartida.getText());
-        int llegada = Integer.parseInt(this.txtIDLlegada.getText());
-        this.editorTexto.setText(this.gestorPlace.dijkstra(partida, llegada));           
+            int partida = Integer.parseInt(this.txtIDPartida.getText());
+            int llegada = Integer.parseInt(this.txtIDLlegada.getText());
+            this.editorTexto.setText(this.gestorPlace.dijkstra(partida, llegada));
         } catch (Exception e) {
             showMessageDialog(null, "ERROR");
         }
-        
-        
+
+
     }//GEN-LAST:event_btnDijkstraActionPerformed
 
     private void btnPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPokemonActionPerformed
         try {
-        
-        String nombre = this.txtNombre.getText();
-        String especie = this.txtEspecie.getText();
-        String preevolucion = this.txtPreEvolucion.getText();
-        String posibleEvo = this.txtPosibleEvo.getText();
-        String padre = this.txtPadre.getText();
-        String hijo = this.txtHijo.getText();
-        int ataque = Integer.parseInt(this.txtAtaque.getText());
-        int defensa = Integer.parseInt(this.txtDefensa.getText());
-        int ataqueEsp = Integer.parseInt(this.txtAtaqueesp.getText());
-        int defensaEsp = Integer.parseInt(this.txtDefEsp.getText());
-        Pokemon pokemon = new Pokemon(especie, nombre, preevolucion, posibleEvo, padre, hijo, ataque, defensa, ataqueEsp, defensaEsp);
-        this.gestorPokemo.nuevoVertice(pokemon);
-        actualizarTablaPokemones();            
+
+            String nombre = this.txtNombre.getText();
+            String especie = this.txtEspecie.getText();
+            String preevolucion = this.txtPreEvolucion.getText();
+            String posibleEvo = this.txtPosibleEvo.getText();
+            String padre = this.txtPadre.getText();
+            String hijo = this.txtHijo.getText();
+            int ataque = Integer.parseInt(this.txtAtaque.getText());
+            int defensa = Integer.parseInt(this.txtDefensa.getText());
+            int ataqueEsp = Integer.parseInt(this.txtAtaqueesp.getText());
+            int defensaEsp = Integer.parseInt(this.txtDefEsp.getText());
+            Pokemon pokemon = new Pokemon(especie, nombre, preevolucion, posibleEvo, padre, hijo, ataque, defensa, ataqueEsp, defensaEsp);
+            this.gestorPokemo.nuevoVertice(pokemon);
+            actualizarTablaPokemones();
         } catch (Exception e) {
             showMessageDialog(null, "ERROR");
         }
@@ -628,22 +646,27 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPokemonActionPerformed
 
     private void btnGrafoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafoPokemonActionPerformed
-      this.gestorPokemo.inicializarGrafo();
-      actualizarTablaR();
+        this.gestorPokemo.inicializarGrafo();
+        actualizarTablaR();
     }//GEN-LAST:event_btnGrafoPokemonActionPerformed
 
     private void btnRelacionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelacionarActionPerformed
-       
+
         try {
-         Pokemon padre = this.gestorPokemo.buscarNombre(this.txtGrafoP.getText());
-        Pokemon hijo = this.gestorPokemo.buscarNombre(this.txtgrafoH.getText());
-        this.gestorPokemo.nuevaArista(padre, hijo);
-        showMessageDialog(null, "Se relaciona: "+this.gestorPokemo.buscarNombre(this.txtGrafoP.getText()).getNombre()
-        +"a "+this.gestorPokemo.buscarNombre(this.txtgrafoH.getText()).getNombre());           
+            Pokemon padre = this.gestorPokemo.buscarNombre(this.txtGrafoP.getText());
+            Pokemon hijo = this.gestorPokemo.buscarNombre(this.txtgrafoH.getText());
+            this.gestorPokemo.nuevaArista(padre, hijo);
+            showMessageDialog(null, "Se relaciona: " + this.gestorPokemo.buscarNombre(this.txtGrafoP.getText()).getNombre()
+                    + "a " + this.gestorPokemo.buscarNombre(this.txtgrafoH.getText()).getNombre());
         } catch (Exception e) {
         }
 
     }//GEN-LAST:event_btnRelacionarActionPerformed
+
+    private void btnVerGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerGrafoActionPerformed
+        // TODO add your handling code here:
+        canvas c = new canvas();
+    }//GEN-LAST:event_btnVerGrafoActionPerformed
     public void actualizarTablaPlaces() {
 
         ModeladorTablas.vaciarTabla(this.tableVertices);
@@ -659,12 +682,12 @@ public class Principal extends javax.swing.JFrame {
             temp = temp.getNext();
         }
     }
-    
+
     public void actualizarTablaRutas() {
 
         ModeladorTablas.vaciarTabla(this.tableAristas);
         Object[] filaNueva;
-        
+
         for (int i = 0; i < this.gestorPlace.getGrafo().getAristas().size(); i++) {
             Arista temp = this.gestorPlace.getGrafo().getAristas().get(i);
             filaNueva = new Object[]{temp.getId_arista(),
@@ -674,8 +697,8 @@ public class Principal extends javax.swing.JFrame {
             ModeladorTablas.nuevaFila(this.tableAristas, filaNueva);
 
         }
-    } 
-    
+    }
+
     public void actualizarTablaPokemones() {
 
         ModeladorTablas.vaciarTabla(this.tablePokemones);
@@ -691,16 +714,17 @@ public class Principal extends javax.swing.JFrame {
                 temp.getElement().getAtaque(),
                 temp.getElement().getDefensa(),
                 temp.getElement().getAtaqueEsp(),
-            temp.getElement().getDefensaEsp()};
+                temp.getElement().getDefensaEsp()};
             ModeladorTablas.nuevaFila(this.tablePokemones, filaNueva);
             temp = temp.getNext();
         }
     }
+
     public void actualizarTablaR() {
 
         ModeladorTablas.vaciarTabla(this.tableRelacion);
         Object[] filaNueva;
-        
+
         for (int i = 0; i < this.gestorPokemo.getGrafo().getAristas().size(); i++) {
             Arista temp = this.gestorPokemo.getGrafo().getAristas().get(i);
             filaNueva = new Object[]{temp.getId_arista(),
@@ -709,7 +733,8 @@ public class Principal extends javax.swing.JFrame {
             ModeladorTablas.nuevaFila(this.tableRelacion, filaNueva);
 
         }
-    }    
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -753,6 +778,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnPokemon;
     private javax.swing.JButton btnRelacionar;
+    private javax.swing.JButton btnVerGrafo;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JTextPane editorTexto;
     private javax.swing.JScrollPane jScrollPane1;
@@ -806,4 +832,52 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField txtY;
     private javax.swing.JTextField txtgrafoH;
     // End of variables declaration//GEN-END:variables
+ //para visualizar el grafo
+    class canvas extends JFrame {
+
+        // create a canvas 
+        Canvas c;
+
+        // constuctor 
+        canvas() {
+            super("canvas");
+
+            // create a empty canvas 
+            c = new Canvas() {
+                public void paint(Graphics g) {
+                    super.paint(g);
+                    Graphics2D circulo = (Graphics2D) g;
+                    circulo.setStroke(new BasicStroke(10.f));
+                    circulo.setPaint(Color.blue);
+                    //datos sobre el circulo
+                    int radio = 40;
+                    int d = radio * 2;
+                    //se recorre la lista de vertices 
+                    DoubleLinkedNode<PokePlace> temp = gestorPlace.listaPlaces.getHead();
+                    while (temp != null) {
+                        //se crea cada nodo en la pantalla con sus datos
+                        circulo.drawOval(temp.getElement().getX(), temp.getElement().getY(), d, d);
+                        circulo.drawString(temp.getElement().getId(), temp.getElement().getX() + 30, temp.getElement().getY() + 40);
+                        circulo.drawString(temp.getElement().getTipo(), temp.getElement().getX() - 8, temp.getElement().getY() + 50);
+                        //dibuja trazo
+                        System.out.println(gestorPlace.getControlador().getAristas().size());
+                        if (!gestorPlace.getControlador().getAristas().isEmpty()) {
+                            for (int i = 0; i < gestorPlace.getControlador().getAristas().size(); i++) {
+                                if (gestorPlace.getControlador().getAristas().get(i).getPuntoLlegada().equals(temp.getElement().getId()) && gestorPlace.getControlador().getAristas().get(i).getPuntoLlegada().equals(temp.getNext().getElement().getId())) {
+                                    //circulo.drawLine(temp.getElement().getX(), temp.getNext().getElement().getX(), temp.getElement().getX(), temp.getElement().getX());                                 
+                                }
+                            }
+                        }
+                        temp = temp.getNext();
+                    }
+                }
+            };
+            // set background 
+            c.setBackground(Color.black);
+
+            add(c);
+            setSize(1300, 700);
+            show();
+        }
+    }
 }
